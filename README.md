@@ -1,21 +1,32 @@
 # cnif
 
-> A sample project
+## セットアップ
 
-## Build Setup
+```sh
+$ docker-compose build
+$ docker-compose up -d
 
-``` bash
-# install dependencies
-npm install
+$ docker-compose exec client bash
+root@container:/# npm install
+root@container:/# exit
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+$ docker-compose exec api bash
+root@container:/# composer install
+root@container:/# composer install
+root@container:/# mv Plugin/LampagerCakephp2 app/Plugin/Lampager
+root@container:/# exit
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 実行
+
+```sh
+$ docker-compose up -d
+```
+
+## 確認
+
+```
+http://localhost:8080
+```
+
+![Image](https://user-images.githubusercontent.com/6535425/37680556-98ecd62a-2cc7-11e8-9183-808975d88c78.gif)
