@@ -1,0 +1,2 @@
+export const INITIALIZE = 'INITIALIZE';
+export const ARTICLE_FETCH = 'ARTICLE_FETCH';

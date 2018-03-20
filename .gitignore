@@ -1,0 +1,5 @@
+node_modules
+dist
+api/vendor
+api/app/Plugin/*
+api/app/tmp

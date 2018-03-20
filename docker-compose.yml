@@ -1,0 +1,45 @@
+version: "2.1"
+
+services:
+  api:
+    build: ./api
+    links:
+      - database
+    working_dir: /var/www/html/api
+    volumes:
+      - ./api:/var/www/html/api
+
+  web:
+    image: nginx:1.13
+    links:
+      - api
+      - client
+    ports:
+      - "${PORT-8080}:80"
+    volumes:
+      - ./dist:/var/www/html
+      - ./api:/var/www/html/api
+      - ./web/conf:/etc/nginx/conf.d
+
+  client:
+    image: node:9.3
+    working_dir: /usr/src/app
+    command: npm run dev
+    volumes:
+      - ./:/usr/src/app
+
+  database:
+    image: mysql:5.7
+    command: [--character-set-server=utf8]
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+      - database:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  database:
+    driver: local
