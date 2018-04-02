@@ -2,5 +2,8 @@
     "require": {
         "cakephp/cakephp": "^2",
         "lampager/lampager-cakephp2": "^0.1.1"
+    },
+    "config": {
+        "vendor-dir": "Vendor/"
     }
 }

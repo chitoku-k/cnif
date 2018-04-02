@@ -18,8 +18,6 @@ root@container:/# exit
 
 $ docker-compose exec api bash
 root@container:/# composer install
-root@container:/# composer install
-root@container:/# mv Plugin/LampagerCakephp2 app/Plugin/Lampager
 root@container:/# exit
 ```
 
