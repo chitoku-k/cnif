@@ -13,7 +13,7 @@
  * @since         CakePHP(tm) v 0.10.8.2117
  */
 
-require_once ROOT . DS . 'vendor' . DS . 'autoload.php';
+require_once ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'autoload.php';
 
 // Setup a 'default' cache configuration for use in the application.
 Cache::config('default', array('engine' => 'File'));
