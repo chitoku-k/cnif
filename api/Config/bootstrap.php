@@ -16,7 +16,11 @@
 require_once ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'autoload.php';
 
 // Setup a 'default' cache configuration for use in the application.
-Cache::config('default', array('engine' => 'File'));
+Cache::config('default', array(
+	'engine' => 'Redis',
+	'server' => 'redis',
+	'duration' => '+10 seconds',
+));
 
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
@@ -85,14 +89,15 @@ Configure::write('Dispatcher.filters', array(
 /**
  * Configures default file logging options
  */
+App::uses('ConsoleOutput', 'Console');
 App::uses('CakeLog', 'Log');
 CakeLog::config('debug', array(
-	'engine' => 'File',
+	'engine' => 'ConsoleLog',
+	'stream' => new ConsoleOutput('php://stdout'),
 	'types' => array('notice', 'info', 'debug'),
-	'file' => 'debug',
 ));
 CakeLog::config('error', array(
-	'engine' => 'File',
+	'engine' => 'ConsoleLog',
+	'stream' => new ConsoleOutput('php://stderr'),
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
-	'file' => 'error',
 ));

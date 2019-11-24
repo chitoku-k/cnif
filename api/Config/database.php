@@ -7,6 +7,6 @@ class DATABASE_CONFIG {
 		'host' => 'database',
 		'login' => 'root',
 		'password' => 'root',
-		'database' => 'root',
+		'database' => 'cnif',
 	);
 }
