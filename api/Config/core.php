@@ -325,7 +325,7 @@
  *       Please check the comments in bootstrap.php for more info on the cache engines available
  *       and their settings.
  */
-$engine = 'File';
+$engine = 'Redis';
 
 // In development mode, caches should expire quickly.
 $duration = '+999 days';
@@ -342,6 +342,7 @@ $prefix = 'app_';
  */
 Cache::config('_cake_core_', array(
 	'engine' => $engine,
+	'server' => 'redis',
 	'prefix' => $prefix . 'cake_core_',
 	'path' => CACHE . 'persistent' . DS,
 	'serialize' => ($engine === 'File'),
@@ -354,6 +355,7 @@ Cache::config('_cake_core_', array(
  */
 Cache::config('_cake_model_', array(
 	'engine' => $engine,
+	'server' => 'redis',
 	'prefix' => $prefix . 'cake_model_',
 	'path' => CACHE . 'models' . DS,
 	'serialize' => ($engine === 'File'),

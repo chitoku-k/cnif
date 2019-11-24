@@ -1,10 +1,11 @@
-FROM php:7.2.0-fpm
+FROM php:7.3.12-fpm
 
-RUN apt-get -y update
-RUN apt-get -y install git unzip
+RUN apt-get -y update && \
+    apt-get -y install git unzip
 
-RUN curl -sL 'https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer' | php -- --quiet
-RUN mv composer.phar /usr/bin/composer
-
-RUN pecl install xdebug-2.6.0beta1
-RUN docker-php-ext-install pdo_mysql
+RUN curl -sL 'https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer' | php -- --quiet && \
+    mv composer.phar /usr/bin/composer && \
+    pecl install redis && \
+    echo 'extension=redis.so' > /usr/local/etc/php/conf.d/redis.ini && \
+    pecl install xdebug-2.8.0 && \
+    docker-php-ext-install pdo_mysql
