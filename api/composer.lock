@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9553a53a897001cffbc07812f80b2812",
+    "content-hash": "919786ed6735f60f608cf6980ff1cfbd",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -224,16 +224,16 @@
         },
         {
             "name": "lampager/lampager-cakephp2",
-            "version": "v0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lampager/lampager-cakephp2.git",
-                "reference": "003ccb75f3a402b07757cd175786c63580ce4dc1"
+                "reference": "478b5e6c104335b9c409dee5b214c34739f0fcfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lampager/lampager-cakephp2/zipball/003ccb75f3a402b07757cd175786c63580ce4dc1",
-                "reference": "003ccb75f3a402b07757cd175786c63580ce4dc1",
+                "url": "https://api.github.com/repos/lampager/lampager-cakephp2/zipball/478b5e6c104335b9c409dee5b214c34739f0fcfd",
+                "reference": "478b5e6c104335b9c409dee5b214c34739f0fcfd",
                 "shasum": ""
             },
             "require": {
@@ -272,7 +272,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2018-12-28T16:47:02+00:00"
+            "time": "2019-11-24T14:21:41+00:00"
         }
     ],
     "packages-dev": [],
