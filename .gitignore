@@ -1,5 +1,2 @@
 node_modules
 dist
-api/Vendor
-api/Plugin/*
-api/tmp
