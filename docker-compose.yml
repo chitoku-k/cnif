@@ -3,17 +3,12 @@ version: "2.1"
 services:
   api:
     build: ./api
-    links:
-      - database
     working_dir: /var/www/html/api
     volumes:
       - ./api:/var/www/html/api
 
   web:
     image: nginx:1.16
-    links:
-      - api
-      - client
     ports:
       - "${PORT-8080}:80"
     volumes:
