@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\ORM\Query as AppQuery;
 use Cake\ORM\TableRegistry;
-use Lampager\ArrayProcessor;
 
 class ArticlesController extends AppController
 {
@@ -17,8 +16,7 @@ class ArticlesController extends AppController
         $articles = TableRegistry::getTableLocator()->get('Articles');
 
         /** @var AppQuery $query */
-        $query = $articles->lampager();
-        $query
+        $query = $articles->lampager()
             ->forward($direction === 'next')
             ->cursor($cursor)
             ->seekable(false)
@@ -26,9 +24,7 @@ class ArticlesController extends AppController
             ->order(['id' => 'ASC'])
             ->limit(15);
 
-        // TODO: Temporarily using ArrayProcessor directly here. Needs refactoring.
-        $articles = (new ArrayProcessor())->process($query->_paginator->configure($cursor), $query->toArray());
-        $this->set('articles', $articles);
+        $this->set('articles', $query);
         $this->set('_serialize', ['articles']);
     }
 }

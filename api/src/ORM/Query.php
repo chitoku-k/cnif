@@ -13,7 +13,7 @@ use Lampager\Contracts\Cursor;
 class Query extends BaseQuery
 {
     /** @var Paginator */
-    public $_paginator;
+    protected $_paginator;
 
     /** @var Cursor|int[]|string[] */
     protected $_cursor = [];
@@ -41,6 +41,15 @@ class Query extends BaseQuery
         }
 
         return $obj;
+    }
+
+    /**
+     * @param Cursor[]|int[]|string[] $cursor
+     */
+    public function cursor($cursor = [])
+    {
+        $this->_cursor = $cursor;
+        return $this;
     }
 
     /**
@@ -90,12 +99,15 @@ class Query extends BaseQuery
     /**
      * {@inheritDoc}
      */
-    protected function _execute()
+    public function all()
     {
-        $this->_executeOrder($this->clause('order'));
-        $this->_executeLimit($this->clause('limit'));
+        if ($this->_results !== null) {
+            return $this->_results;
+        }
 
-        return parent::_execute();
+        parent::all();
+
+        return $this->_results = $this->_paginator->paginate();
     }
 
     /**
@@ -182,15 +194,6 @@ class Query extends BaseQuery
             $generator->resetCount();
             $this->_paginator->limit($limit->sql($generator));
         }
-    }
-
-    /**
-     * @param Cursor[]|int[]|string[] $cursor
-     */
-    public function cursor($cursor = [])
-    {
-        $this->_cursor = $cursor;
-        return $this;
     }
 
     /**

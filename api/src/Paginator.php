@@ -3,6 +3,10 @@
 namespace App;
 
 use App\ORM\Query;
+use Lampager\ArrayProcessor;
+use Lampager\Concerns\HasProcessor;
+use Lampager\Contracts\Cursor;
+use Lampager\PaginationResult;
 use Lampager\Paginator as BasePaginator;
 use Lampager\Query as LampagerQuery;
 use Lampager\Query\Condition;
@@ -13,9 +17,12 @@ use Lampager\Query\UnionAll;
 
 class Paginator extends BasePaginator
 {
-    /**
-     * @var Query $builder
-     */
+    use HasProcessor;
+
+    /** @var LampagerQuery $query */
+    public $query;
+
+    /** @var Query $builder */
     public $builder;
 
     /**
@@ -29,8 +36,13 @@ class Paginator extends BasePaginator
     public function __construct(Query $builder)
     {
         $this->builder = $builder;
+        $this->processor = new ArrayProcessor();
     }
 
+    /**
+     * @param  LampagerQuery $query
+     * @return Query
+     */
     public function transform(LampagerQuery $query)
     {
         return $this->compileSelectOrUnionAll($query->selectOrUnionAll());
@@ -39,14 +51,26 @@ class Paginator extends BasePaginator
     /**
      * Configure -> Transform.
      *
-     * @param  Cursor|int[]|string[] $curosr
-     * @return void
+     * @param Cursor|int[]|string[] $curosr
      */
     public function build($cursor = [])
     {
-        return $this->transform($this->configure($cursor));
+        $this->query = $this->configure($cursor);
+        $this->transform($this->query);
     }
 
+    /**
+     * @return mixed|PaginationResult
+     */
+    public function paginate()
+    {
+        return $this->process($this->query, $this->builder->toArray());
+    }
+
+    /**
+     * @param  SelectOrUnionAll $selectOrUnionAll
+     * @return Query
+     */
     protected function compileSelectOrUnionAll(SelectOrUnionAll $selectOrUnionAll)
     {
         if ($selectOrUnionAll instanceof Select) {
@@ -57,9 +81,13 @@ class Paginator extends BasePaginator
             $mainQuery = $this->compileSelect(clone $this->builder, $selectOrUnionAll->mainQuery());
             return $supportQuery->unionAll($mainQuery);
         }
+        // @codeCoverageIgnoreStart
+        throw new \LogicException('Unreachable here');
+        // @codeCoverageIgnoreEnd
     }
 
     /**
+     * @param  Query  $builder
      * @param  Select $select
      * @return Query
      */
