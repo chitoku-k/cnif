@@ -40,6 +40,9 @@ class Query extends BaseQuery
             $obj->$k = $v;
         }
 
+        $obj->_executeOrder($obj->clause('order'));
+        $obj->_executeLimit($obj->clause('limit'));
+
         return $obj;
     }
 
@@ -49,6 +52,7 @@ class Query extends BaseQuery
     public function cursor($cursor = [])
     {
         $this->_cursor = $cursor;
+
         return $this;
     }
 
@@ -208,6 +212,7 @@ class Query extends BaseQuery
             'inclusive',
             'seekable',
             'unseekable',
+            'fromArray',
         ];
 
         if (in_array($method, $options, true)) {

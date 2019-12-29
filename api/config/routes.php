@@ -66,7 +66,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/articles/:direction/*', [
         'controller' => 'Articles',
-        'action' => 'index',
+        'action' => 'behavior',
     ])->setPatterns(['direction' => 'next|previous'])->setPass(['direction']);
 
     /**

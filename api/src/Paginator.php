@@ -3,7 +3,6 @@
 namespace App;
 
 use App\ORM\Query;
-use Lampager\ArrayProcessor;
 use Lampager\Concerns\HasProcessor;
 use Lampager\Contracts\Cursor;
 use Lampager\PaginationResult;
