@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Datasource;
+namespace Lampager\Cake\Datasource;
 
-use App\ORM\Query;
 use Cake\Datasource\Paginator as CakePaginator;
 use Cake\Datasource\QueryInterface;
+use Lampager\Cake\ORM\Query;
 
 class Paginator extends CakePaginator
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Model\Behavior;
+namespace Lampager\Cake\Model\Behavior;
 
-use App\ORM\Query;
 use Cake\ORM\Behavior;
+use Lampager\Cake\ORM\Query;
 
 class LampagerBehavior extends Behavior
 {

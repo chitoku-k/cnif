@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace Lampager\Cake;
 
-use App\ORM\Query;
 use Lampager\ArrayProcessor as BaseArrayProcessor;
+use Lampager\Cake\ORM\Query;
 use Lampager\Query as LampagerQuery;
 
 class ArrayProcessor extends BaseArrayProcessor

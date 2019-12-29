@@ -21,7 +21,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Lampager\\Cake\\": "plugins/Lampager/src/"
         }
     },
     "autoload-dev": {

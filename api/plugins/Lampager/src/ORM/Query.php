@@ -1,13 +1,13 @@
 <?php
 
-namespace App\ORM;
+namespace Lampager\Cake\ORM;
 
 use Cake\Database\Expression\OrderByExpression;
 use Cake\Database\Expression\OrderClauseExpression;
 use Cake\Database\Expression\QueryExpression;
 use Cake\Database\ExpressionInterface;
 use Cake\ORM\Query as BaseQuery;
-use App\Paginator;
+use Lampager\Cake\Paginator;
 use Lampager\Contracts\Cursor;
 
 class Query extends BaseQuery

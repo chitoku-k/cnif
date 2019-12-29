@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Datasource\Paginator;
-use App\ORM\Query as AppQuery;
 use Cake\ORM\TableRegistry;
+use Lampager\Cake\Datasource\Paginator;
+use Lampager\Ckae\ORM\Query;
 
 class ArticlesController extends AppController
 {
@@ -24,7 +24,7 @@ class ArticlesController extends AppController
 
         $articles = TableRegistry::getTableLocator()->get('Articles');
 
-        /** @var AppQuery $query */
+        /** @var Query $query */
         $query = $articles->lampager()
             ->forward($direction === 'next')
             ->cursor($cursor)

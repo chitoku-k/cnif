@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace Lampager\Cake;
 
-use App\ORM\Query;
+use Lampager\Cake\ORM\Query;
 use Lampager\Concerns\HasProcessor;
 use Lampager\Contracts\Cursor;
 use Lampager\PaginationResult;
