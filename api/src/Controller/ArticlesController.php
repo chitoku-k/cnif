@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use Lampager\Cake\Datasource\Paginator;
-use Lampager\Ckae\ORM\Query;
+use Lampager\Cake\ORM\Query;
 
 class ArticlesController extends AppController
 {
@@ -48,8 +48,8 @@ class ArticlesController extends AppController
             'cursor' => $cursor,
             'seekable' => false,
             'order' => [
-                'Articles.created' => 'DESC',
-                'Articles.id' => 'ASC',
+                'created' => 'DESC',
+                'id' => 'ASC',
             ],
             'limit' => 15,
         ]));

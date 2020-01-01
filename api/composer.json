@@ -5,6 +5,7 @@
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
         "lampager/lampager": "^0.4.0",
+        "lampager/lampager-cakephp": "^0.1.0",
         "mobiledetect/mobiledetectlib": "2.*"
     },
     "require-dev": {
@@ -21,8 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "Lampager\\Cake\\": "plugins/Lampager/src/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
