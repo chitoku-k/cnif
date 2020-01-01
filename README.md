@@ -1,6 +1,6 @@
 # cnif
 
-拙作の CakePHP プラグイン [lampager/lampager-cakephp2](https://github.com/lampager/lampager-cakephp2) の動作を示すサンプル アプリケーションです。
+拙作の CakePHP プラグイン [lampager/lampager-cakephp](https://github.com/lampager/lampager-cakephp) の動作を示すサンプル アプリケーションです。
 
 Docker Compose 上に PHP-FPM + MySQL で動作する CakePHP の API 側と、Vue.js で動作するクライアントサイドによって構成されています。
 
