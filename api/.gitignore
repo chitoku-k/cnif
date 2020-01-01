@@ -1,0 +1,4 @@
+/config/app.php
+/config/.env
+/logs/*
+/vendor/*
